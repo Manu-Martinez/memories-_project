@@ -4,10 +4,10 @@ import axios from 'axios';
 //url pointing to the backend route //
 const url = 'http//:localhost:3000/posts';
 
-//GET method //
+//GET route //
 export const fetchPosts = () => axios.get(url);
 
-// POST method//
+// POST route //
 export const createPost = (newPost) => axios.post(url, newPost);
 
 

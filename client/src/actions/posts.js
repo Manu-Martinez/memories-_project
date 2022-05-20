@@ -19,7 +19,7 @@ export const getPosts = () => async (dispatch) => {
 export const newPost = (post) => async (dispatch) => {
     // getting the response from the api //
     try {
-        const { data } = await.api.createPost(post);
+        const { data } = await api.createPost(post);
 
         dispatch ({ type: 'CREATE', payload: data });
     } catch (error) {

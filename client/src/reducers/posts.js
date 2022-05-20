@@ -1,4 +1,4 @@
-export default reducer = ( posts = [], action) => {
+export default ( posts = [], action) => {
     switch (action.type) {
         case 'FETCH ALL':
             return action.payload;

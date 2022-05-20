@@ -1,9 +1,8 @@
-import { ReactReduxContext } from 'react-redux';
 import * as api from '../api';
 
 // GET action //
 
-export default getPosts = () => async (dispatch) => {
+export const getPosts = () => async (dispatch) => {
 
     // getting the response from the api // 
     try {

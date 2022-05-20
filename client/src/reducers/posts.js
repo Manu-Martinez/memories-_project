@@ -1,7 +1,7 @@
 export default reducer = ( posts = [], action) => {
     switch (action.type) {
         case 'FETCH ALL':
-            return posts;
+            return action.payload;
         case 'CREATE':
             return posts;
         default:

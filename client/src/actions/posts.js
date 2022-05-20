@@ -1,6 +1,6 @@
 import * as api from '../api';
 
-// GET action //
+// GET method //
 
 export const getPosts = () => async (dispatch) => {
 
@@ -14,3 +14,15 @@ export const getPosts = () => async (dispatch) => {
     }   
 }
 
+
+// POST method //
+export const newPost = (post) => async (dispatch) => {
+    // getting the response from the api //
+    try {
+        const { data } = await.api.createPost(post);
+
+        dispatch ({ type: 'CREATE', payload: data });
+    } catch (error) {
+        console.log(error.message);
+    }
+}

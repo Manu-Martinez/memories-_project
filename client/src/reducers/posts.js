@@ -3,8 +3,9 @@
 export default (posts = [], action) => {
     switch (action.type) {
         case 'DELETE':
-            return posts.filter((post) => post._id !== action.payload);
-        case 'UPDATE':
+            return posts.filter((post) => post._id !== action.payload);   
+        case 'UPDATE': // stacked both UPDATE and LIKE because they do the same process //
+        case 'LIKE':
             return posts.map((post) => post._id === action.payload._id ? action.payload : post);
         case 'FETCH ALL':
             return action.payload;

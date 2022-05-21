@@ -46,7 +46,7 @@ const Form = ({ currentId, setCurrentId }) => {
          <Typography variant='h6'>{ currentId ? 'Editing' : 'Creating' } a memory </Typography>
          <TextField name='creator' variant='outlined' label='Creator' fullWidth value={postData.creator} onChange={(e) => setPostData({ ...postData, creator: e.target.value})}> </TextField>
          <TextField name='title' variant='outlined' label='Title' fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value})}> </TextField>
-         <TextField name='message' variant='outlined' label='Message' fullWidth value={postData.message} onChange={(e) => setPostData({ ...postData, label: e.target.value})}> </TextField>
+         <TextField name='message' variant='outlined' label='Message' fullWidth value={postData.message} onChange={(e) => setPostData({ ...postData, label: e.target.value.split(',')  })}> </TextField>
          <TextField name='tags' variant='outlined' label='Tags' fullWidth value={postData.tags} onChange={(e) => setPostData({ ...postData, tags: e.target.value})}> </TextField>
          <div className={classes.fileInput}>
              <FileBase type='file'

@@ -8,7 +8,7 @@ import Auth from "./components/Auth/Auth";
 
 
 
-const App = () => {
+const App = () => (
   <BrowserRouter> 
     <Container maxWidth="lg"> 
       <NavBar />
@@ -18,6 +18,6 @@ const App = () => {
       </Switch>
     </Container>
   </BrowserRouter>
-}
+)
 
 export default App;

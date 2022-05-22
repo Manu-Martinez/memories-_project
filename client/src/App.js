@@ -4,16 +4,20 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import NavBar from "./components/NavBar/NavBar";
 import Home from "./components/Home/Home";
+import Auth from "./components/Auth/Auth";
 
 
 
 const App = () => {
-  return (
-      <Container maxWidth="lg"> 
+  <BrowserRouter> 
+    <Container maxWidth="lg"> 
       <NavBar />
-      <Home />
-      </Container>
-    );
+      <Switch>
+        <Route path="/" component={Home}></Route>
+        <Route path="/auth" component={Auth}></Route>
+      </Switch>
+    </Container>
+  </BrowserRouter>
 }
 
 export default App;

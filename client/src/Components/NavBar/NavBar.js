@@ -10,7 +10,8 @@ const NavBar = () => {
     const classes = useStyles();
 
     const user = null;
-
+    
+    return (
     <AppBar className={classes.appBar} position="static" color="inherit">
         <div className={classes.brandContainer}> 
             <Typography component={Link} to="/" className={classes.heading} variant="h2" align="center">Memories </Typography>
@@ -32,6 +33,7 @@ const NavBar = () => {
             )}
         </Toolbar>
     </AppBar>
+    )
 }
 
 export default NavBar;

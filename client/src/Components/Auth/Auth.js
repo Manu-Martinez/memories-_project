@@ -49,7 +49,7 @@ const Auth = () => {
                     <LockOutlinedIcon />
                 </Avatar>
                 <Typography variant="h5">{IsSignUp ? 'Sign Up' : 'Sign In'}</Typography>
-                <Form className={classes.form} onSubmit={handleSubmit}>
+                <form className={classes.form} onSubmit={handleSubmit}>
                     <Grid container spacing={2}>
                         {                    // Implemented ternary for the sign up form //
                             IsSignUp && (
@@ -90,7 +90,7 @@ const Auth = () => {
                             </Button>
                         </Grid>
                     </Grid>
-                </Form>
+                </form>
             </Paper>
         </Container>
     )

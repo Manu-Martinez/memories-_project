@@ -10,7 +10,7 @@ import useStyles from './styles';
 
 const Home = () => { 
     const classes = useStyles();
-    const { currentId, setCurrentId } = useState(null);
+    const [ currentId, setCurrentId ] = useState(null);
     const dispatch = useDispatch();
 
     useEffect(() => {

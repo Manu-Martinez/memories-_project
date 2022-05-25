@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Avatar, Button, Paper, Grid, Typography, Container } from "@material-ui/core";
 import { GoogleLogin } from 'react-google-login';
 import { useDispatch } from 'react-redux';
+import { useHistory } from "react-router-dom";
 
 
 import Icon from "./Icon";
@@ -15,6 +16,8 @@ const Auth = () => {
     const classes = useStyles();
     const [ showPassword, setShowPassword ] = useState(false);
     const [ IsSignUp, setIsSignUp ] = useState(false);
+
+    const history = useHistory();
     const dispatch = useDispatch();
     
     const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword
@@ -41,6 +44,8 @@ const Auth = () => {
 
         try {
             dispatch({ type: 'AUTH', data: { result, token } });
+
+            history.push('/');
         } catch (error) {
             console.log(error);
         }

@@ -33,8 +33,8 @@ const Auth = () => {
     };
     
 
-    const googleSuccess = () => {
-    
+    const googleSuccess = async (res) => {
+        console.log(res);
     };
 
     const googleFailure = () => {
@@ -65,8 +65,13 @@ const Auth = () => {
                             IsSignUp && <Input name="confirmPassword" label="Repeat Password" handleChange={handleChange} type="password" /> 
                         }
                     </Grid>
+                    <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
+                        {                    // Implemented ternary for sign in/sign up forms  //
+                            IsSignUp ? "Sign Up" : "Sign In"
+                        }
+                    </Button>
                     <GoogleLogin
-                        clientId="GOOGLE ID"
+                        clientId="194753385148-8hjvnjk0n2i9l4l3sa4cukr8sgi6bhti.apps.googleusercontent.com"
                         render={(renderprops) => (
                             <Button className={classes.googleButton} color="primary" fullWidth onClick={renderprops.onClick} disabled={renderprops.disabled} startIcon={<Icon />} variant="contained" >
                                 Google Sign In
@@ -76,11 +81,6 @@ const Auth = () => {
                     onFailure={googleFailure}
                     cookiePolicy="single_host_origin"
                     />
-                    <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
-                        {                    // Implemented ternary for sign in/sign up forms  //
-                            IsSignUp ? "Sign Up" : "Sign In"
-                        }
-                    </Button>
                     <Grid container justify="flex-end">
                         <Grid item>
                             <Button onClick={switchMode}> 

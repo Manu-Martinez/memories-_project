@@ -33,8 +33,8 @@ const Auth = () => {
     
     // switch to change between Sign In and Sign Up forms //
     const switchMode = () => {
-    setIsSignUp((prevIsSignUp) => !prevIsSignUp);
-    handleShowPassword(false);
+        setIsSignUp((prevIsSignUp) => !prevIsSignUp);
+        handleShowPassword(false);
     };
     
 

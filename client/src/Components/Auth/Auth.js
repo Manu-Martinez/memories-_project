@@ -3,6 +3,7 @@ import { Avatar, Button, Paper, Grid, Typography, Container } from "@material-ui
 import { GoogleLogin } from 'react-google-login';
 import { useDispatch } from 'react-redux';
 import { useHistory } from "react-router-dom";
+import { signin, signup } from '../../actions/auth';
 
 
 import Icon from "./Icon";
@@ -10,12 +11,13 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import useStyles from './styles';
 import Input from "./Input";
 
-
+const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
 
 const Auth = () => {
     const classes = useStyles();
     const [ showPassword, setShowPassword ] = useState(false);
     const [ IsSignUp, setIsSignUp ] = useState(false);
+    const [ formData, setFormData ] = useState(initialState);
 
     const history = useHistory();
     const dispatch = useDispatch();
@@ -23,12 +25,17 @@ const Auth = () => {
     const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword
     );
 
-    const handleSubmit = () => {
-
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if(IsSignUp) {
+            dispatch(signup(formData, history))
+        } else {
+            dispatch(signin(formData, history))
+        }
     };
 
-    const handleChange = () => {
-
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
     };
     
     // switch to change between Sign In and Sign Up forms //
@@ -52,7 +59,7 @@ const Auth = () => {
     };
 
     const googleFailure = () => {
-    console.log("Google Sign In was unsuccessful. Try again later");
+        console.log("Google Sign In was unsuccessful. Try again later");
     };
 
 
@@ -67,6 +74,7 @@ const Auth = () => {
                     <Grid container spacing={2}>  
                         { IsSignUp && ( <>  
                                         <Input name="firstName" label="First Name" handleChange={handleChange} half /> 
+                                        <Input name="lastName" label="Last Name" handleChange={handleChange} half /> 
                                         </>)}         
                         <Input name="email" label="Email Address" handleChange={handleChange} type="email" />
                         <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword} 

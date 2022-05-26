@@ -79,11 +79,23 @@ export const deletePost = async (req, res) => {
 export const likePost = async (req, res) => {
     const { id } = req.params;
 
+    if(!req.userId) return res.json({ message: "Unauthenticated" });
+
     if (!mongoose.Types.ObjectId.isValid(id)) 
     return res.status(404).send('No posts with that id' );
-     
+    
     const post = await PostMessage.findById(id);
-    const updatedPost = await postMessage.findByIdAndUpdate(id, { likeCount: post.likeCount + 1 }, { new: true })
+
+
+    // added this so that the user may use the Like function once per post //
+    const index = post.likes.findIndex((id) => id === String(req.userId));
+    if(index === -1) {
+       post.likes.push(req.userId); // like the post //
+    } else {
+        post.likes = post.likes.filter((id) => id != String(req.userId));  // returns all the likes the post has //
+    }
+
+    const updatedPost = await postMessage.findByIdAndUpdate(id, post , { new: true })
 
     res.json(updatedPost);
 }

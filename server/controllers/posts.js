@@ -3,7 +3,7 @@ import PostMessage from '../models/postMessage.js';
 
 //Server side HTTP Protocols//
 
-// GET //
+// GET MULTIPLE POSTS //
 export const getPosts = async (req, res) => {
     try {
         const postMessages = await PostMessage.find();
@@ -15,6 +15,22 @@ export const getPosts = async (req, res) => {
         res.status(404).json({ message: error.message });
     }
 }
+
+
+// GET SINGLE POST //
+
+export const getPost = async (req, res) => { 
+    const { id } = req.params;
+
+    try {
+        const post = await PostMessage.findById(id);
+        
+        res.status(200).json(post);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+}
+
 
 
 // POST //

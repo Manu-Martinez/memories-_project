@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import postRoutes from './routes/posts.js';
+import userRoutes from './routes/users.js';
 
 
 // Initializing app // 
@@ -19,7 +20,7 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
 app.use('/posts', postRoutes);
-
+app.use('/user', userRoutes);
 
 // connecting with MongoDB Atlas database //
 const CONNECTION_URL = 'mongodb+srv://manuel:manuel123@cluster0.nas2z.mongodb.net/?retryWrites=true&w=majority';

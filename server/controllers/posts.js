@@ -35,12 +35,14 @@ export const getPost = async (req, res) => {
 
 // POST //
 export const createPost = async  (req, res) => {
+    
+
     const post = req.body;
 
-    const newPost = new PostMessage(post);
+    const newPostMessage = new PostMessage({ ...post, creator: req.userId, createdAt: newDate().toISOString() });
 
     try {
-        await newPost.save();
+        await newPostMessage.save();
 
         res.status(201).json(newPost);
     } catch (error) {

@@ -4,6 +4,12 @@ import axios from 'axios';
 //url pointing to the backend route  //
 const API = axios.create({ baseURL: 'http://localhost:3000' });
 
+API.interceptors.request.use((req) => {
+    if(localStorage.getItem('Profile')) {
+        req.headers.Authorization
+    }
+});
+
 //GET endpoint //
 export const fetchPosts = () => API.get('/posts');
 

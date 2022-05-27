@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { AppBar, Avatar, Button, Typography, Toolbar } from '@material-ui/core';
+import decode from 'jwt-decode';
 
 import useStyles from './styles';
 import memories from '../../images/memories.png';
@@ -17,7 +18,7 @@ const NavBar = () => {
     const logout = () => {
         dispatch({ type: 'LOGOUT' });
 
-        history.push('/auth');
+        history.push('/');
         setUser(null);
     };
     
@@ -25,6 +26,11 @@ const NavBar = () => {
     useEffect(() => {
         const token = user?.token;
 
+        if(token) {
+            const decodedToken = decode(token);
+
+            if(decodedToken.exp * 1000  < new Date().getTime()) logout();
+        }
 
         setUser(JSON.parse(localStorage.getItem('profile')));
     }, [location]); 

@@ -1,20 +1,27 @@
 import axios from 'axios';
 
 
-//url pointing to the backend route //
-const url = 'http//:localhost:3000/posts';
+//url pointing to the backend route  //
+const API = axios.create({ baseURL: 'http://localhost:3000' });
 
-//GET route //
-export const fetchPosts = () => axios.get(url);
+//GET endpoint //
+export const fetchPosts = () => API.get('/posts');
 
-// POST route //
-export const createPost = (newPost) => axios.post(url, newPost);
+// POST endpoint //
+export const createPost = (newPost) => API.post('/posts', newPost);
 
-// PATCH route //
-export const updatePost = (id, updatedPost) => axios.patch(`${url}/${id}`, updatedPost);
+// PATCH endpoint //
+export const updatePost = (id, updatedPost) => API.patch(`/posts/${id}`, updatedPost);
 
-// DELETE route //
-export const deletePost = (id) => axios.delete(`${url}/${id}`);
+// LIKE endpoint //
+export const likePost = (id) => API.patch(`/posts/${id}/likePost`); 
 
-// LIKE route //
-export const likePost = (id) => axios.patch(`${url}/${id}/likePost`); 
+// DELETE endpoint //
+export const deletePost = (id) => API.delete(`/posts/${id}`);
+
+// SIGN IN endpoint //
+export const signIn = (formData) => API.post('/users/signin', formData);
+
+// SIGN UP endpoint //
+export const signUp = (formData) => API.post('/users/signup', formData);
+

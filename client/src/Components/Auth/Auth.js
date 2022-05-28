@@ -58,13 +58,10 @@ const SignUp = () => {
         }
     };
 
-    const googleFailure = () => {
-        console.log("Google Sign In was unsuccessful. Try again later");
-    };
+    const googleFailure = () => console.log("Google Sign In was unsuccessful. Try again later");
 
-    const handleChange = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value });
-    };
+    const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
 
     
     return (

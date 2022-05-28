@@ -1,5 +1,5 @@
 import { CREATE, UPDATE, DELETE, LIKE, FETCH_ALL} from '../constants/actionTypes';
-import * as api from '../api';
+import * as api from '../api/index';
 
 // GET method //
 

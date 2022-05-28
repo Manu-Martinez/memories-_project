@@ -63,7 +63,7 @@ const SignUp = () => {
     };
 
     const handleChange = (e) => {
-        setFormData({ ...form, [e.target.name]: e.target.value });
+        setForm({ ...form, [e.target.name]: e.target.value });
     };
 
     

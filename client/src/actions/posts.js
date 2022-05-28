@@ -1,4 +1,4 @@
-import { CREATE, UPDATE, DELETE, FETCH_ALL} from '../constants/actionTypes';
+import { CREATE, UPDATE, DELETE, LIKE, FETCH_ALL} from '../constants/actionTypes';
 import * as api from '../api';
 
 // GET method //

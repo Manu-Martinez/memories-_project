@@ -14,11 +14,11 @@ import Input from "./Input";
 
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
 
-const Auth = () => {
+const SignUp = () => {
     const classes = useStyles();
-    const [ showPassword, setShowPassword ] = useState(false);
-    const [ IsSignUp, setIsSignUp ] = useState(false);
-    const [ formData, setFormData ] = useState(initialState);
+    const [showPassword, setShowPassword] = useState(false);
+    const [IsSignUp, setIsSignUp] = useState(false);
+    const [form, setForm] = useState(initialState);
 
     const history = useHistory();
     const dispatch = useDispatch();
@@ -29,6 +29,7 @@ const Auth = () => {
     
     // switch to change between Sign In and Sign Up forms //
     const switchMode = () => {
+        setForm(initialState);
         setIsSignUp((prevIsSignUp) => !prevIsSignUp);
         handleShowPassword(false);
     };
@@ -38,9 +39,9 @@ const Auth = () => {
         e.preventDefault();
         
         if(IsSignUp) {
-            dispatch(signup(formData, history));
+            dispatch(signup(form, history));
         } else {
-            dispatch(signin(formData, history));
+            dispatch(signin(form, history));
         }
     };
 
@@ -62,7 +63,7 @@ const Auth = () => {
     };
 
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        setFormData({ ...form, [e.target.name]: e.target.value });
     };
 
     
@@ -105,7 +106,7 @@ const Auth = () => {
                 </form>
             </Paper>
         </Container>
-    )
-}
+    );
+};
 
-export default Auth;
+export default SignUp;

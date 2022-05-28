@@ -10,7 +10,7 @@ import useStyles from './styles';
 
 const Home = () => { 
     const classes = useStyles();
-    const [ currentId, setCurrentId ] = useState(null);
+    const [currentId, setCurrentId] = useState(null);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -21,7 +21,7 @@ const Home = () => {
         <Container>
             <Grid className={classes.gridContainer} container justifyContent="space-between" alignItems="stretch" spacing={3}>
                 <Grid item xs={12} sm={7}>
-                    <Posts  setCurrentId={setCurrentId}/> 
+                    <Posts setCurrentId={setCurrentId}/> 
                 </Grid>
                 <Grid item xs={12} sm={7}>
                     <Form currentId={currentId} setCurrentId={setCurrentId}/>
@@ -29,7 +29,7 @@ const Home = () => {
             </Grid>
         </Container> 
     </Grow>
-    )
-}
+    );
+};
 
 export default Home;

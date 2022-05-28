@@ -13,7 +13,7 @@ export const getPosts = () => async (dispatch) => {
     } catch (error) {
         console.log(error);
     }   
-}
+};
 
 
 // POST method //
@@ -26,7 +26,7 @@ export const createPost = (post) => async (dispatch) => {
     } catch (error) {
         console.log(error);
     }
-}
+};
 
 // PATCH method //
 export const updatePost = (id, post) => async (dispatch) => {
@@ -38,7 +38,7 @@ export const updatePost = (id, post) => async (dispatch) => {
     } catch (error) {
         console.log(error);
     }
-}
+};
 
 // DELETE method //
 export const deletePost = (id) => async (dispatch) => {
@@ -50,7 +50,7 @@ export const deletePost = (id) => async (dispatch) => {
     } catch (error) {
         console.log(error);
     }
-}
+};
 
 // LIKE //
 export const likePost = (id) => async (dispatch) => {
@@ -62,4 +62,4 @@ export const likePost = (id) => async (dispatch) => {
     } catch (error) {
         console.log(error);
     }
-}
+};

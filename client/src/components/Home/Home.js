@@ -23,10 +23,35 @@ const Home = () => {
     const history = useHistory();
     const page = query.get('page') || 1;
     const searchQuery = query.get('searchQuery');
+    const [search, setSearch] = useState('');
+    const [tags, setTags] = useState([]);
+
 
     useEffect(() => {
     dispatch(getPosts()); 
     }, [currentId, dispatch]);
+
+    // searchPost function to button //
+    const searchPost = () => {
+        if (search.trim()) {
+
+        } else {
+            history.push('/');
+        }
+    };
+
+    // function for ENTER key pressed // 
+    const handleKeyPress = (e) => {
+        if (e.keyCode === 13) {    // keyCode 13 means the user pressed the key ENTER//
+            searchPost();
+        }
+    };
+
+    // function that allows to add tags //
+    const handleAdd = (tag) => setTags([...tags, tag]);
+
+    // function that allows to delete tags//
+    const handleDelete = (tagToDelete) => setTags(tags.filter((tag) => tag != tagToDelete));
 
     return (
         <Grow in> 
@@ -41,11 +66,23 @@ const Home = () => {
                     name="search" 
                     variant="outlined" 
                     label="Search Memories"
+                    onKeyPress={handleKeyPress}
                     fullWidth
-                    value="TEST"
-                    onChange={() => {}}
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    />
+                    <ChipInput 
+                    styles={{margin: '10px 0 '}}
+                    value={tags}
+                    onAdd={handleAdd}
+                    onDelete={handleDelete}
+                    label="Search Tags"
+                    variant="outlined"
                     />
                 </AppBar>
+                <Button onClick={searchPost} className={classes.searchButton} variant="contained" color="primary">
+                    Search
+                </Button>
                     <Form currentId={currentId} setCurrentId={setCurrentId} />
                     <Paper className={classes.pagination} elevation={6}>
                         <Pagination />

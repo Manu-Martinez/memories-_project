@@ -14,6 +14,10 @@ API.interceptors.request.use((req) => {
 //GET endpoint //
 export const fetchPosts = () => API.get('/posts');
 
+
+// SEARCH endpoint //
+export const fetchPostsBySearch = (searchQuery) => API.get(`/posts/search?searchQuery=${searchQuery.search || 'none'}&tags=${searchQuery.tags} `);
+
 // POST endpoint //
 export const createPost = (newPost) => API.post('/posts', newPost);
 
@@ -31,4 +35,6 @@ export const signIn = (formData) => API.post('/user/signin', formData);
 
 // SIGN UP endpoint //
 export const signUp = (formData) => API.post('/user/signup', formData);
+
+
 

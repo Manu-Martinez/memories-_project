@@ -25,7 +25,7 @@ export const getPostsBySearch = (searchQuery) => async (dispatch) => {
     } catch (error) {
         console.log(error);
     }
-}
+};
 
 
 // POST method //

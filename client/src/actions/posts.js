@@ -16,6 +16,18 @@ export const getPosts = () => async (dispatch) => {
 };
 
 
+// SEARCH action //
+export const getPostsBySearch = (searchQuery) => async (dispatch) => {
+    try {
+        const { data } = await.api.fetchPostsBySearch(searchQuery);
+
+        console.log(data);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
 // POST method //
 export const createPost = (post) => async (dispatch) => {
     // getting the response from the api //

@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPosts } from "../actions/posts";
 
 import useStyles from './styles';
-import { useEffect } from 'react';
 
 const Paginate = ({ page }) => {
     const classes = useStyles();

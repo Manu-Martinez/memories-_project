@@ -8,10 +8,18 @@ const router = express.Router();
 
 // GET MULTIPLE POSTS //
 export const getPosts = async (req, res) => {
-    try {
-        const postMessages = await PostMessage.find();
+    const { page } = req.query;
 
-        res.status(200).json(postMessages);
+    try {
+        const LIMIT = 8;
+        const startIndex = (Number(page) - 1) * LIMIT; // this is used to get the starting index of every page //
+        const total = await postMessage.countDocuments({});
+
+        // this is used to show the first eight latest posts from every page //
+        const posts = await PostMessage.find().sort({ _id: -1 }).limit(LIMIT).skip(startIndex);
+        
+        // the response will show all the data on the frontend //
+        res.status(200).json({ data: posts, currentPage: Number(page), numberOfPages: Math.ceil(total / LIMIT) });
     } catch (error) {
         res.status(404).json({ message: error.message });
     }

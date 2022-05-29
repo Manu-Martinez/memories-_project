@@ -52,7 +52,7 @@ const Home = () => {
     const handleAdd = (tag) => setTags([...tags, tag]);
 
     // function that allows to delete tags//
-    const handleDelete = (tagToDelete) => setTags(tags.filter((tag) => tag != tagToDelete));
+    const handleDelete = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagToDelete));
 
     return (
         <Grow in> 

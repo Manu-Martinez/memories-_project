@@ -7,7 +7,7 @@ import ChipInput from '@material-ui-chip-input';
 import Posts from "../Posts/Posts";
 import Form from "../Form/Form";
 import { useDispatch } from "react-redux";
-import { getPosts } from '../../actions/posts';
+import { getPosts, getPostsBySearch } from '../../actions/posts';
 import useStyles from './styles';
 
 function useQuery() {
@@ -34,7 +34,7 @@ const Home = () => {
     // searchPost function to button //
     const searchPost = () => {
         if (search.trim()) {
-
+            dispatch(getPostsBySearch({ search, tags: tags.join(',') }));
         } else {
             history.push('/');
         }

@@ -3,11 +3,11 @@ import * as api from '../api/index';
 
 // GET method //
 
-export const getPosts = () => async (dispatch) => {
+export const getPosts = (page) => async (dispatch) => {
 
     // getting the response from the api // 
     try {
-        const { data } = await api.fetchPosts();
+        const { data } = await api.fetchPosts(page);
 
         dispatch({ type: FETCH_ALL, payload: data });
     } catch (error) {

@@ -28,6 +28,9 @@ export const createPost = (newPost) => API.post('/posts', newPost);
 // PATCH endpoint //
 export const updatePost = (id, updatedPost) => API.patch(`/posts/${id}`, updatedPost);
 
+// POST COMMENT endpoint //
+export const comment = (value, id) => API.post(`/posts/${id}/commentPost`, { value }); 
+
 // LIKE endpoint //
 export const likePost = (id) => API.patch(`/posts/${id}/likePost`); 
 

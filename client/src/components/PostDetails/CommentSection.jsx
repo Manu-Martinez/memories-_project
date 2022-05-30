@@ -7,7 +7,7 @@ import useStyles from "./styles";
 
 const CommentSection = ({ post }) => {
     const classes = useStyles();
-    const [comments, setComments] = useState([1, 2, 3, 4]);
+    const [comments, setComments] = useState(post?.comments);
     const [comment, setComment] = useState('');
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem('profile'));
@@ -25,7 +25,7 @@ const CommentSection = ({ post }) => {
                     <Typography gutterbottom variant="h6" >Comments</Typography>
                     {comments.map((c, i) => (
                         <Typography key={i} gutterbottom variant="subtitle1" >
-                            Comment {i}
+                            {c}
                         </Typography>
                     ))}
                 </div>

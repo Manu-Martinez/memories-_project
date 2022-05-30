@@ -1,6 +1,24 @@
 import { CREATE, UPDATE, DELETE, LIKE, FETCH_ALL, FETCH_BY_SEARCH, START_LOADING, END_LOADING } from '../constants/actionTypes';
 import * as api from '../api/index';
 
+
+//GET single post//
+export const getPost = (id) => async (dispatch) => {
+
+    // getting the response from the api // 
+    try {
+        dispatch({ type: START_LOADING });
+        const { data } = await api.fetchPosts(id);
+
+        dispatch({ type: FETCH_POST, payload: data });
+        dispatch({ type: END_LOADING });
+    } catch (error) {
+        console.log(error);
+    }   
+};
+
+
+
 // GET method //
 
 export const getPosts = (page) => async (dispatch) => {

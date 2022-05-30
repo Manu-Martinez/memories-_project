@@ -107,7 +107,7 @@ export const commentPost = (value, id) => async (dispatch) => {
     try {
         const { data } = await api.comment(value, id);
 
-        console.log(data);
+        dispatch({ type: COMMENT, payload: data });
     } catch (error) {
         console.log(error);
     }

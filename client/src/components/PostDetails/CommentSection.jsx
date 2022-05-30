@@ -1,8 +1,9 @@
 import React from "react";
 import { useState, useRef } from "react";
-import { Typography, Textfield, Button } from '@material-ui/core';
+import { Typography, TextField, Button } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import useStyles from "./styles";
+import { commentPost } from "../../actions/posts";
 
 
 const CommentSection = ({ post }) => {
@@ -13,9 +14,13 @@ const CommentSection = ({ post }) => {
     const user = JSON.parse(localStorage.getItem('profile'));
 
 
-    const handleClick = () => {
+    const handleComment = async () => {
         const finalComment = `${user.result.name}: ${comment}`;
-        dispatch(commentPost(finalComment, post_id));
+
+        const newComments = await dispatch(commentPost(finalComment, post._id));
+
+        setComments(newComments);
+        setComment('');
     };
 
     return (
@@ -32,7 +37,7 @@ const CommentSection = ({ post }) => {
                 { user?.result?.name && (   //if there's a user, show the create comment section//
                 <div style={{ width: '70%'}}>
                     <Typography gutterBottom variant="h6" >Write a comment</Typography>
-                    <Textfield 
+                    <TextField 
                     fullWidth
                     rows={4}
                     variant="outlined"
@@ -41,7 +46,7 @@ const CommentSection = ({ post }) => {
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
                     />
-                    <Button style={{ margintop: '10px'}} fullWidth disabled={!comment} variant="contained" color="primary" onClick={handleClick} >
+                    <Button style={{ margintop: '10px'}} fullWidth disabled={!comment} variant="contained" color="primary" onClick={handleComment} >
                         Comment
                     </Button>
                 </div>

@@ -6,7 +6,6 @@ const router = express.Router();
 
 
 router.get('/search', getPostsBySearch);
-router.get('/:id', getPost);
 router.get('/', getPosts);
 router.post('/', auth, createPost);
 router.get('/:id', getPost);

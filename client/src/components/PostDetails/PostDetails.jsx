@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import { useParams, useHistory } from 'react-router-dom';
 import useStyles from './styles';
+import { getPost, getPostsBySearch } from '../../actions/posts'; 
 
 
 const PostDetails = () => {
@@ -12,6 +13,20 @@ const PostDetails = () => {
     const history = useHistory();
     const classes = useStyles();
     const { id } = useParams();
+
+    useEffect(() => {
+        dispatch(getPost(id));
+    }, [id]);
+
+    if (!post) return null;
+
+    if (isLoading) {
+        return  (
+            <Paper elevation={6} className={classes.loadingPaper}>
+                <CircularProgress size="7em" />
+            </Paper>
+        );
+    }
     
     return (
         <div className={classes.card}>

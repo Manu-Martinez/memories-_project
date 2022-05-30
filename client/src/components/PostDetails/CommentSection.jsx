@@ -10,7 +10,7 @@ const CommentSection = ({ post }) => {
     const [comments, setComments] = useState([1, 2, 3, 4]);
     const [comment, setComment] = useState('');
     const dispatch = useDispatch();
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(localStorage.getItem('profile'));
 
 
     const handleClick = () => {
@@ -29,6 +29,7 @@ const CommentSection = ({ post }) => {
                         </Typography>
                     ))}
                 </div>
+                { user?.result?.name && (   //if there's a user, show the create comment section//
                 <div style={{ width: '70%'}}>
                     <Typography gutterBottom variant="h6" >Write a comment</Typography>
                     <Textfield 
@@ -44,6 +45,7 @@ const CommentSection = ({ post }) => {
                         Comment
                     </Button>
                 </div>
+                )}
             </div>
         </div>
 

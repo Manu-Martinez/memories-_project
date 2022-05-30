@@ -11,6 +11,7 @@ const CommentSection = ({ post }) => {
     const [comments, setComments] = useState(post?.comments);
     const [comment, setComment] = useState('');
     const dispatch = useDispatch();
+    const commentsRef = useRef();
     const user = JSON.parse(localStorage.getItem('profile'));
 
 

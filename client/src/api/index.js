@@ -11,7 +11,11 @@ API.interceptors.request.use((req) => {
     return req;
 });
 
-//GET endpoint //
+//GET endpoint single post//
+export const fetchPost = (id) => API.get(`/posts/${id}`);
+
+
+//GET endpoint multiple posts//
 export const fetchPosts = (page) => API.get(`/posts?page=${page}`);
 
 

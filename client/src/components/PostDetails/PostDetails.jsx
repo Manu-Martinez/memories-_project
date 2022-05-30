@@ -18,7 +18,7 @@ const PostDetails = () => {
 
     useEffect(() => {
         
-        dispatch(getPost(id)); // eslint-disable-next-line no-use-before-define
+        dispatch(getPost(id));
     }, [id]);
 
 

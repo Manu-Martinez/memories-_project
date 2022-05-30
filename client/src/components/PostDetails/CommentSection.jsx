@@ -21,6 +21,8 @@ const CommentSection = ({ post }) => {
 
         setComments(newComments);
         setComment('');
+
+        commentsRef.current.ScrollIntoView({ behavior: "smooth" });
     };
 
     return (
@@ -30,9 +32,11 @@ const CommentSection = ({ post }) => {
                     <Typography gutterbottom variant="h6" >Comments</Typography>
                     {comments.map((c, i) => (
                         <Typography key={i} gutterbottom variant="subtitle1" >
-                            {c}
+                            <strong>{c.split(': ')[0]}</strong>
+                            {c.split(':')[1]}
                         </Typography>
                     ))}
+                    <div ref={commentsRef} />
                 </div>
                 { user?.result?.name && (   //if there's a user, show the create comment section//
                 <div style={{ width: '70%'}}>

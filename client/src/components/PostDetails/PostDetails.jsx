@@ -17,14 +17,13 @@ const PostDetails = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        
-        dispatch(getPost(id));
-    }, [id]);
+        dispatch(getPost(id)); 
+    }, [id]);   // eslint-disable-line
 
 
     useEffect(() => {
-        dispatch(getPostsBySearch({ search: 'none', tags: post?.tags.join(',') }));
-    }, [post]);
+        dispatch(getPostsBySearch({ search: 'none', tags: post?.tags.join(',') }));  
+    }, [post]);   // eslint-disable-line
 
 
     if (!post) return null;

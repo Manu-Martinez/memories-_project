@@ -24,9 +24,9 @@ const Post = ({ post, setCurrentId }) => {
         dispatch(likePost(post._id));
 
         if (hasLikedPost) {
-            setLikes(likes.filter((id) => id !== userId));
+            setLikes(post.likes.filter((id) => id !== userId));
         } else {
-            setLikes([...likes, userId]);
+            setLikes([...post.likes, userId]);
         }
     };
 

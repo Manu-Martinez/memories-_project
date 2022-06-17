@@ -1,4 +1,4 @@
-# memories-_project
+# memories-project
 
 This is a project made using MongoDB, Express, React and Node to build a simple MERN fullstack social media app.
 In Memories, users can post pictures with tags, as well as update and delete the posts, like and comment other people's memories.
